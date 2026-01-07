@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import api from '../services/api';
 
@@ -8,10 +8,10 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
-
+  console.log(user)
   useEffect(() => {
     if (token) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
