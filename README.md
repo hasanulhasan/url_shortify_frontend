@@ -1,16 +1,78 @@
-# React + Vite
+# Shortify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application that converts long URLs into short, shareable links. Users can create shortened URLs, track their performance, and manage their links through a dashboard.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**  
+  - User registration and login  
+  - Secure authentication using JWT  
+  - Protected dashboard routes for authenticated users only  
 
-## React Compiler
+- **URL Shortening**  
+  - Generate a unique short URL for any long URL  
+  - Short code length: 6-8 characters  
+  - Copy-to-clipboard functionality  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **URL Redirection**  
+  - Redirect short URLs to the original URL  
+  - Track clicks/visits per URL  
 
-## Expanding the ESLint configuration
+- **Dashboard**  
+  - View all shortened URLs in a table  
+  - Display: Original URL (truncated), Short code, Short URL, Total clicks, Created date  
+  - Delete URLs  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Usage Limits**  
+  - Free tier: Maximum 100 shortened URLs per user  
+  - Alert when the limit is reached  
+
+---
+
+## Setup Instructions
+
+1. **Clone the repository**  
+
+```bash
+git clone https://github.com/hasanulhasan/url_shortify_frontend
+cd frontend
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+
+```bash
+VITE_API_URL=http://localhost:8000
+```
+
+4. **Run the server**
+
+```bash
+npm run dev
+```
+
+## API Documentation
+
+#### 
+- **Register User:** `POST /api/auth/register`
+- **Login User:** `POST /api/auth/login`
+- **User Profile:** `GET /api/auth/profile`
+- **Create Short URL:** `POST /api/url/shorten`
+- **Check URL with shortcode:** `GET /api/url/:shortCode`
+- **Get URL Info** `GET /api/url/:shortCode/stats`
+- **Delete URL Info** `DELETE /api/url/:shortCode`
+- **URL Info in User Dashboard** `GET /api/dashboard/urls`
+- **All URLs data in User Dashboard** `GET /api/dashboard/stats`
+
+
+## Links
+
+#### Frontend Live Link : https://url-shorten-beta.netlify.app/
+#### Frontend Git Link: https://github.com/hasanulhasan/url_shortify_frontend
+#### Backend Git Link: https://github.com/hasanulhasan/url_shortify_backend
+
